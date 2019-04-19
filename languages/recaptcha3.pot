@@ -1,0 +1,40 @@
+#: ./Pages/Admin.php:30
+msgid "Your Recaptcha 3 settings were saved."
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:16
+msgid "Configure google recaptcha"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:27
+msgid "Recaptcha3 siteKey"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:40
+msgid "Recaptcha3 privateKey"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:58
+msgid "Save settings"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3/menu.tpl.php:1
+msgid "Recaptcha"
+msgstr ""
+
+#: ./Recaptcha3.php:40
+msgid "Capture token could not be found"
+msgstr ""
+
+#: ./Recaptcha3.php:45
+msgid "Captcha could not be verified as no response was retrieved from recaptcha servers"
+msgstr ""
+
+#: ./Recaptcha3.php:49
+msgid "There was a problem processing the captcha: %s"
+msgstr ""
+
+#: ./Recaptcha3.php:53
+msgid "Captcha failed, score of %s is below the minimum threshold of %s for %s"
+msgstr ""
+
