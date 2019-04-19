@@ -8,7 +8,8 @@
         "known",
         "plugin",
         "recaptcha",
-        "recaptcha3"
+        "recaptcha3",
+        "spam"
     ],
     "license": "GPL-2.0",
     "authors": [
