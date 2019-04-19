@@ -37,20 +37,20 @@ class Recaptcha3 {
 
         // Check that we've actually got a recaptcha token
         if ($token)
-            throw new \RuntimeException('Capture token could not be found');
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Capture token could not be found'));
 
         // Verify recaptcha response
         $response = $this->challenge($action, $token);
         if (empty($response))
-            throw new \RuntimeException('Captcha could not be verified as no response was retrieved from recaptcha servers');
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Captcha could not be verified as no response was retrieved from recaptcha servers'));
 
         // Did we get a successful response, or an error? 
         if (!$response['success'])
-            throw new \RuntimeException('There was a problem processing the captcha: ' . implode(',', $response['error-codes']));
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('There was a problem processing the captcha: %s', [implode(',', $response['error-codes'])]));
 
         // Test threshold value
         if ($response['score'] < $threshold)
-            throw new \RuntimeException("Captcha failed, score of {$response['score']} is below the minimum threshold of {$threshold} for {$action}");
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_("Captcha failed, score of %s is below the minimum threshold of %s for %s", [$response['score'], $threshold, $action]));
         
         return true;
     }
