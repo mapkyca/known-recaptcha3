@@ -52,6 +52,8 @@ class Recaptcha3 {
         if ($response['score'] < $threshold)
             throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_("Captcha failed, score of %s is below the minimum threshold of %s for %s", [$response['score'], $threshold, $action]));
         
+	\Idno\Core\Idno::site()->logging()->debug("Recaptcha test passed for {$action} with score {$response['score']} (threshold $threshold)");
+	
         return true;
     }
     
