@@ -2,7 +2,7 @@
 
 namespace IdnoPlugins\Recaptcha3;
 
-class Main extends Idno\Common\Plugin {
+class Main extends \Idno\Common\Plugin {
 
     function registerTranslations() {
         \Idno\Core\Idno::site()->language()->register(
