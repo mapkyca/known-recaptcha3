@@ -1,0 +1,12 @@
+{
+    "name": "Recaptcha3",
+    "repository": {
+	"type": "git",
+	"url": "git@github.com:mapkyca/known-recaptcha3.git",
+	"owner": "mapkyca",
+	"repo": "known-recaptcha3"
+    },
+    "devDependencies": {
+      "grunt": "^1.0.3"
+    }
+}
