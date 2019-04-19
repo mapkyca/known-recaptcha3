@@ -22,24 +22,22 @@ class Recaptcha3 {
      * @global string $error
      * @return boolean
      * @param $action The action you're protecting
-     * @param $theshold Minimal threshold value between 0 and 1
      * @throws \RuntimeException
      */
-    public function gatekeeper($action, $threshold) {
-
+    public function gatekeeper($action) {
+        
         // Not a process, don't continue
         if (!$action)
             return true;
+        
+        // Normalise action
+        $action = trim($action, ' /');
 
         $token = \Idno\Core\Idno::site()->currentPage()->getInput('recaptcha-token');
 
         // Check that we've actually got a recaptcha token
         if ($token)
             throw new \RuntimeException('Capture token could not be found');
-
-        // Not a protected process, don't continue
-        if (!$this->isProtected($action))
-            return true;
 
         // Verify recaptcha response
         $response = $this->challenge($action, $token);
@@ -55,6 +53,21 @@ class Recaptcha3 {
             throw new \RuntimeException("Captcha failed, score of {$response['score']} is below the minimum threshold of {$threshold} for {$action}");
         
         return true;
+    }
+    
+    /**
+     * Obtain a threshold for the action, or returning the default value if an entry isn't found
+     * @param type $action
+     * @return float
+     */
+    protected function getThreshold($action) {
+        $config = Main::getConfig();
+        
+        if (!empty($config['thresholds'][$action]))
+            return $config['thresholds'][$action];
+        
+        return $config['defaultThreshold'];
+            
     }
     
     /**
