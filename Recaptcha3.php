@@ -82,6 +82,9 @@ class Recaptcha3 {
         $recaptcha_response = $token;
 
         $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+	
+	\Idno\Core\Idno::site()->logging()->debug('Recaptcha challenge: ' . $recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+	\Idno\Core\Idno::site()->logging()->debug(var_export($recaptcha, true));
 
         return json_decode($recaptcha, true);
     }
