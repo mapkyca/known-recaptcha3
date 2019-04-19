@@ -4,7 +4,7 @@ $config = \IdnoPlugins\Recaptcha3\Main::getConfig();
 ?>
 <script>
     grecaptcha.ready(function () {
-        grecaptcha.execute('<?php echo $config['siteKey']; ?>', { action: '<?= str_replace(['.', '/'], '_', strtolower($vars['action'])); ?>' }).then(function (token) {
+        grecaptcha.execute('<?php echo $config['siteKey']; ?>', { action: '<?= str_replace(['.', '/'], '_', strtolower(trim($vars['action'], ' /'))); ?>' }).then(function (token) {
             $('#recaptcha-token').val(token);
         });
     });
