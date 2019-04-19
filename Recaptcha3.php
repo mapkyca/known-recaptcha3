@@ -36,8 +36,8 @@ class Recaptcha3 {
         $token = \Idno\Core\Idno::site()->currentPage()->getInput('recaptcha-token');
 
         // Check that we've actually got a recaptcha token
-        if ($token)
-            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Capture token could not be found'));
+        if (!$token)
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Captcha token could not be found'));
 
         // Verify recaptcha response
         $response = $this->challenge($action, $token);
