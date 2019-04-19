@@ -23,7 +23,7 @@ msgid "Recaptcha"
 msgstr ""
 
 #: ./Recaptcha3.php:40
-msgid "Capture token could not be found"
+msgid "Captcha token could not be found"
 msgstr ""
 
 #: ./Recaptcha3.php:45
