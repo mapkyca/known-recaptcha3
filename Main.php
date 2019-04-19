@@ -3,6 +3,18 @@
 namespace IdnoPlugins\Recaptcha3;
 
 class Main extends \Idno\Common\Plugin {
+    
+    function registerPages()
+    {
+	// Register admin settings
+	\Idno\Core\site()->addPageHandler('admin/recaptcha3', '\IdnoPlugins\Recaptcha3\Pages\Admin');
+	
+	// Add menu items to account & administration screens
+	\Idno\Core\site()->template()->extendTemplate('admin/menu/items', 'admin/recaptcha3/menu');
+	
+	// Extend header
+	\Idno\Core\site()->template()->extendTemplate('shell/head', 'recaptcha3/header');
+    }
 
     function registerTranslations() {
         \Idno\Core\Idno::site()->language()->register(
