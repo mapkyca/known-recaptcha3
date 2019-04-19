@@ -1,0 +1,29 @@
+{
+    "name": "mapkyca/known-recaptcha3",
+    "type": "known-plugin",
+    "description": "Google Recaptcha3 bot protection for public forms",
+    "version": "1.0.0",
+    "homepage": "https://www.marcus-povey.co.uk",
+    "keywords": [
+        "known",
+        "plugin",
+        "recaptcha",
+        "recaptcha3"
+    ],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Marcus Povey",
+            "email": "marcus@marcus-povey.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "extra": {
+        "installer-name": "Recaptcha3"
+    },
+    "require-dev": {
+        "mapkyca/known-language-tools": "^1.0"
+    }
+}
