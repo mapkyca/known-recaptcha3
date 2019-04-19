@@ -13,7 +13,7 @@ class Main extends \Idno\Common\Plugin {
 	\Idno\Core\site()->template()->extendTemplate('admin/menu/items', 'admin/recaptcha3/menu');
 	
 	// Extend header
-	\Idno\Core\site()->template()->extendTemplate('shell/head', 'recaptcha3/header');
+	//\Idno\Core\site()->template()->extendTemplate('shell/head', 'recaptcha3/header');
     }
 
     function registerTranslations() {
