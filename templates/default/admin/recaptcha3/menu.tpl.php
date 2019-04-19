@@ -1,1 +1,1 @@
-<li <?php if (strpos($_SERVER['REQUEST_URI'], '/admin/recaptcha3/') !== false) echo 'class="active"'; ?>><a href="<?=\Idno\Core\site()->config()->getDisplayURL(); ?>admin/recaptcha3/">\Idno\Core\Idno::site()->language()->_('Recaptcha');</a></li>
+<li <?php if (strpos($_SERVER['REQUEST_URI'], '/admin/recaptcha3/') !== false) echo 'class="active"'; ?>><a href="<?=\Idno\Core\site()->config()->getDisplayURL(); ?>admin/recaptcha3/"><?= \Idno\Core\Idno::site()->language()->_('Recaptcha'); ?></a></li>
