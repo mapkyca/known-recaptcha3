@@ -3,18 +3,30 @@ msgid "Your Recaptcha 3 settings were saved."
 msgstr ""
 
 #: ./templates/default/admin/recaptcha3.tpl.php:16
-msgid "Configure google recaptcha"
+msgid "To configure Google Recaptcha3 support, go <a href=\"%s\" target=\"_blank\">here</a> to obtain your tokens, and then enter them in the fields below."
 msgstr ""
 
-#: ./templates/default/admin/recaptcha3.tpl.php:27
-msgid "Recaptcha3 siteKey"
+#: ./templates/default/admin/recaptcha3.tpl.php:26
+msgid "Configure site keys"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:33
+msgid "Site Key"
 msgstr ""
 
 #: ./templates/default/admin/recaptcha3.tpl.php:40
-msgid "Recaptcha3 privateKey"
+msgid "Public Recaptcha3 site key"
 msgstr ""
 
-#: ./templates/default/admin/recaptcha3.tpl.php:58
+#: ./templates/default/admin/recaptcha3.tpl.php:47
+msgid "Private Key"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:55
+msgid "Public Recaptcha3 private key"
+msgstr ""
+
+#: ./templates/default/admin/recaptcha3.tpl.php:66
 msgid "Save settings"
 msgstr ""
 
