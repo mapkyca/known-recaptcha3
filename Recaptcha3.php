@@ -26,15 +26,13 @@ class Recaptcha3 {
      */
     public function gatekeeper($action) {
         
-        // Not a process, don't continue
-        if (!$action)
-            return true;
-        
-        // Normalise action
-        $action = trim($action, ' /');
-
+	if (!$this->isProtected($action))
+	    return true; 
+	
         $token = \Idno\Core\Idno::site()->currentPage()->getInput('recaptcha-token');
-
+	$threshold = $this->getThreshold($action);
+	
+	
         // Check that we've actually got a recaptcha token
         if (!$token)
             throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Captcha token could not be found'));
@@ -70,6 +68,18 @@ class Recaptcha3 {
         
         return $config['defaultThreshold'];
             
+    }
+    
+    
+    /**
+     * Return whether a page is protected or not.
+     * @param type $action
+     * @return float
+     */
+    protected function isProtected($action) {
+        $config = Main::getConfig();
+	        
+        return isset($config['thresholds'][$action]);
     }
     
     /**
