@@ -7,7 +7,7 @@ class Main extends \Idno\Common\Plugin {
     function registerPages()
     {
 	// Register admin settings
-	\Idno\Core\site()->addPageHandler('admin/recaptcha3', '\IdnoPlugins\Recaptcha3\Pages\Admin');
+	\Idno\Core\Idno::site()->routes()->addRoute('admin/recaptcha3', '\IdnoPlugins\Recaptcha3\Pages\Admin');
 	
 	// Add menu items to account & administration screens
 	\Idno\Core\site()->template()->extendTemplate('admin/menu/items', 'admin/recaptcha3/menu');
@@ -44,7 +44,7 @@ class Main extends \Idno\Common\Plugin {
             // Override page hooks
             
             //\Idno\Core\Idno::site()->addEventHook('page/get', [$this, 'pageInterceptEvent']);
-            \Idno\Core\Idno::site()->addEventHook('page/post', [$this, 'pageInterceptEvent']);
+            \Idno\Core\Idno::site()->events()->addListener('page/post', [$this, 'pageInterceptEvent']);
             
         }
         

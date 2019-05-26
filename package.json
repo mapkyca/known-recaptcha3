@@ -1,6 +1,6 @@
 {
     "name": "Recaptcha3",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "repository": {
 	"type": "git",
 	"url": "git@github.com:mapkyca/known-recaptcha3.git",
