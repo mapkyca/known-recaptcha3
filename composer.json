@@ -2,7 +2,7 @@
     "name": "mapkyca/known-recaptcha3",
     "type": "known-plugin",
     "description": "Google Recaptcha3 bot protection for public forms",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "homepage": "https://www.marcus-povey.co.uk",
     "keywords": [
         "known",

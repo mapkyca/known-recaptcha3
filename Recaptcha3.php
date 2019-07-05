@@ -26,32 +26,32 @@ class Recaptcha3 {
      */
     public function gatekeeper($action) {
         
-        // Not a process, don't continue
-        if (!$action)
-            return true;
-        
-        // Normalise action
-        $action = trim($action, ' /');
-
+	if (!$this->isProtected($action))
+	    return true; 
+	
         $token = \Idno\Core\Idno::site()->currentPage()->getInput('recaptcha-token');
-
+	$threshold = $this->getThreshold($action);
+	
+	
         // Check that we've actually got a recaptcha token
-        if ($token)
-            throw new \RuntimeException('Capture token could not be found');
+        if (!$token)
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Captcha token could not be found'));
 
         // Verify recaptcha response
         $response = $this->challenge($action, $token);
         if (empty($response))
-            throw new \RuntimeException('Captcha could not be verified as no response was retrieved from recaptcha servers');
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Captcha could not be verified as no response was retrieved from recaptcha servers'));
 
         // Did we get a successful response, or an error? 
         if (!$response['success'])
-            throw new \RuntimeException('There was a problem processing the captcha: ' . implode(',', $response['error-codes']));
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('There was a problem processing the captcha: %s', [implode(',', $response['error-codes'])]));
 
         // Test threshold value
         if ($response['score'] < $threshold)
-            throw new \RuntimeException("Captcha failed, score of {$response['score']} is below the minimum threshold of {$threshold} for {$action}");
+            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_("Captcha failed, score of %s is below the minimum threshold of %s for %s", [$response['score'], $threshold, $action]));
         
+	\Idno\Core\Idno::site()->logging()->debug("Recaptcha test passed for {$action} with score {$response['score']} (threshold $threshold)");
+	
         return true;
     }
     
@@ -70,6 +70,18 @@ class Recaptcha3 {
             
     }
     
+    
+    /**
+     * Return whether a page is protected or not.
+     * @param type $action
+     * @return float
+     */
+    protected function isProtected($action) {
+        $config = Main::getConfig();
+	        
+        return isset($config['thresholds'][$action]);
+    }
+    
     /**
      * Check a token and receive challenge respinse
      * @param type $action
@@ -82,6 +94,9 @@ class Recaptcha3 {
         $recaptcha_response = $token;
 
         $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+	
+	\Idno\Core\Idno::site()->logging()->debug('Recaptcha challenge: ' . $recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+	\Idno\Core\Idno::site()->logging()->debug(var_export($recaptcha, true));
 
         return json_decode($recaptcha, true);
     }
