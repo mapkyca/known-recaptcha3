@@ -24,7 +24,7 @@ class Admin extends \Idno\Common\Page {
         $config['siteKey'] = $siteKey;
         $config['privateKey'] = $privateKey;
 
-        \Idno\Core\site()->config->config['recaptcha3'] = $config;
+        \Idno\Core\site()->config()->config['recaptcha3'] = $config;
 
         \Idno\Core\site()->config()->save();
         \Idno\Core\site()->session()->addMessage(\Idno\Core\Idno::site()->language()->_('Your Recaptcha 3 settings were saved.'));
